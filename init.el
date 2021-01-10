@@ -1,5 +1,9 @@
 (require 'package)
 
+;; required for org mode [IM]
+(add-to-list 'package-archives '
+	     ("org" . "https://orgmode.org/elpa/") t)
+
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
@@ -20,7 +24,7 @@
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(custom-enabled-themes '(deeper-blue))
  '(package-selected-packages
-   '(aggressive-indent paredit rainbow-delimiters exec-path-from-shell cider)))
+   '(org aggressive-indent paredit rainbow-delimiters exec-path-from-shell cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -29,6 +33,12 @@
  ;; If there is more than one, they won't work right.
  )
 
+;; hooks to make clojure mode better [IM]
 (add-hook 'clojure-mode-hook #'paredit-mode)
 (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
+
+;; enable ido-mode [IM]
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
