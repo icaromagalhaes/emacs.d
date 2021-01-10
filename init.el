@@ -19,7 +19,8 @@
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(custom-enabled-themes '(deeper-blue))
- '(package-selected-packages '(exec-path-from-shell cider)))
+ '(package-selected-packages
+   '(aggressive-indent paredit rainbow-delimiters exec-path-from-shell cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -27,3 +28,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(add-hook 'clojure-mode-hook #'paredit-mode)
+(add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'clojure-mode-hook #'aggressive-indent-mode)
