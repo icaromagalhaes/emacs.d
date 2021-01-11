@@ -7,6 +7,13 @@
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
+;; setup maximized startup [IM]
+(add-to-list 'default-frame-alist
+	     '(fullscreen . maximized))
+
+;; setup text size [IM]
+(set-face-attribute 'default nil :height 140)
+
 (package-initialize)
 
 ;; set emacs shell to work with mac env variables [IM]
@@ -24,7 +31,7 @@
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(custom-enabled-themes '(wheatgrass))
  '(package-selected-packages
-   '(org aggressive-indent paredit rainbow-delimiters exec-path-from-shell cider)))
+   '(multiple-cursors neotree org aggressive-indent paredit rainbow-delimiters exec-path-from-shell cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -45,3 +52,5 @@
 
 ;; enable recent files [IM]
 (recentf-mode 1)
+
+(global-set-key [f8] 'neotree-toggle)
