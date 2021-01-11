@@ -49,8 +49,15 @@
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
-
+ 
 ;; enable recent files [IM]
 (recentf-mode 1)
 
+;; setup neotree toggle keybinding [IM]
 (global-set-key [f8] 'neotree-toggle)
+
+;; setup multi cursor shortcut [IM]
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
