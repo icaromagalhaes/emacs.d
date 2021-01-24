@@ -1,23 +1,23 @@
 (require 'package)
 (require 'flycheck-clj-kondo)
 
-;; required for org mode [IM]
+;; required for org mode
 (add-to-list 'package-archives '
 	     ("org" . "https://orgmode.org/elpa/") t)
 
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
-;; setup maximized startup [IM]
+;; setup maximized startup
 (add-to-list 'default-frame-alist
 	     '(fullscreen . maximized))
 
-;; setup text size [IM]
+;; setup text size
 (set-face-attribute 'default nil :height 140)
 
 (package-initialize)
 
-;; set emacs shell to work with mac env variables [IM]
+;; set emacs shell to work with mac env variables
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
@@ -42,28 +42,28 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; hook to set company mode always on [IM]
+;; hook to set company mode always on
 (add-hook 'after-init-hook 'global-company-mode)
 
-;; hooks to make clojure mode better [IM]
+;; hooks to make clojure mode better
 (add-hook 'clojure-mode-hook #'paredit-mode)
 (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
 (add-hook 'clojure-mode-hook #'flycheck-mode)
 
-;; enable ido-mode [IM]
+;; enable ido-mode
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
  
-;; enable recent files [IM]
+;; enable recent files
 (recentf-mode 1)
 (setq recentf-max-saved-items 50)
 
-;; setup neotree toggle keybinding [IM]
+;; setup neotree toggle keybinding
 (global-set-key [f8] 'neotree-toggle)
 
-;; setup multi cursor shortcut [IM]
+;; setup multi cursor shortcut
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
