@@ -1,9 +1,9 @@
 (require 'package)
-(require 'flycheck-clj-kondo)
+(require 'recentf)
 
 ;; required for org mode
-(add-to-list 'package-archives '
-	     ("org" . "https://orgmode.org/elpa/") t)
+(add-to-list 'package-archives
+	     '("org" . "https://orgmode.org/elpa/") t)
 
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
@@ -17,10 +17,6 @@
 
 (package-initialize)
 
-;; set emacs shell to work with mac env variables
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -33,7 +29,7 @@
  '(custom-enabled-themes '(wheatgrass))
  '(global-linum-mode t)
  '(package-selected-packages
-   '(treemacs company flycheck-clj-kondo multiple-cursors org aggressive-indent paredit rainbow-delimiters exec-path-from-shell cider)))
+   '(clojure-mode treemacs company flycheck-clj-kondo multiple-cursors org aggressive-indent paredit rainbow-delimiters exec-path-from-shell cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -42,8 +38,12 @@
  ;; If there is more than one, they won't work right.
  )
 
+;; setup exec-path-from-shell for emacs shell to work with mac env variables
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 ;; hook to set company mode always on
-(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'after-init-hook #'global-company-mode)
 
 ;; hooks to make clojure mode better
 (add-hook 'clojure-mode-hook #'paredit-mode)
@@ -61,10 +61,26 @@
 (setq recentf-max-saved-items 50)
 
 ;; setup neotree toggle keybinding
-(global-set-key [f8] 'neotree-toggle)
+(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+;; alt version for recentf open files without ido mode
+;; (global-set-key (kbd "C-x C-r") 'recentf-open-files)
+
+;; use treemacs keybinding
+(global-set-key [f8] 'treemacs)
 
 ;; setup multi cursor shortcut
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+
+;; defuns
+
+;; TODO: export me
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to \\[find-file] a recent file"
+  (interactive)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
