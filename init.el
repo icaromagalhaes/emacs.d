@@ -1,4 +1,5 @@
 (require 'package)
+(require 'flycheck-clj-kondo)
 
 ;; required for org mode [IM]
 (add-to-list 'package-archives '
@@ -30,8 +31,9 @@
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(custom-enabled-themes '(wheatgrass))
+ '(global-linum-mode t)
  '(package-selected-packages
-   '(multiple-cursors neotree org aggressive-indent paredit rainbow-delimiters exec-path-from-shell cider)))
+   '(treemacs company flycheck-clj-kondo multiple-cursors org aggressive-indent paredit rainbow-delimiters exec-path-from-shell cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -40,10 +42,14 @@
  ;; If there is more than one, they won't work right.
  )
 
+;; hook to set company mode always on [IM]
+(add-hook 'after-init-hook 'global-company-mode)
+
 ;; hooks to make clojure mode better [IM]
 (add-hook 'clojure-mode-hook #'paredit-mode)
 (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
+(add-hook 'clojure-mode-hook #'flycheck-mode)
 
 ;; enable ido-mode [IM]
 (setq ido-enable-flex-matching t)
@@ -52,6 +58,7 @@
  
 ;; enable recent files [IM]
 (recentf-mode 1)
+(setq recentf-max-saved-items 50)
 
 ;; setup neotree toggle keybinding [IM]
 (global-set-key [f8] 'neotree-toggle)
