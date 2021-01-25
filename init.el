@@ -1,5 +1,6 @@
 (require 'package)
 (require 'recentf)
+(require 'flycheck-clj-kondo)
 
 ;; required for org mode
 (add-to-list 'package-archives
