@@ -1,12 +1,11 @@
-This is my personal emacs config file.
-Since I have decided to go Emacs for 2021, I'm making this a public repo.
+I have decided to go Emacs for 2021, and this is my personal setup.
+My intention is to keep it as simple as possible.
 
-I will focus on keeping it as simple as possible and evolve it over time as the necessities raise.
-Here are some of the things I will be focusing as project evolves:
+Points I wish to get working some day:
 
-- Lightweight setup for Clojure Mode, Paredit, Linters and LSP Support
-- Improve overal quality of life, ergonomics, completions, add some caveats, nothing fancy
-- Provide minimal support for other languages such as Prolog, Java, C++, Go, and maybe Scala and Python
-- Setup ORG Mode, LaTeX and other useful text manipulation capabilities that can be useful for Scientific Computing and personal organization
+- Lightweight setup for Clojure via CIDER, Paredit Mode, Clj-kondo or Joker via Flycheck (will test both)
+- Improve quality of life, ergonomics, completions (e.g. Company Mode, Flyckeck, Treemacs, maybe Projectile in the future), nothing fancy
+- Provide minimalist and quality support for other languages such as C++, Python, Java, Go, and maybe Scala and Prolog as necessity surge
+- Setup ORG Mode, LaTeX and other useful text manipulation capabilities that can be useful for Scientific Writing and personal organization
 
-Feel free to throw suggestions, but keep in mind that this is my personal config and I'm no Emacs pro, evangelist, or something like it. I'm just giving it a try.
+Keep in mind that this is my personal config and I'm no Emacs pro, evangelist, or something like it.
