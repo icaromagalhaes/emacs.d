@@ -30,7 +30,7 @@
  '(custom-enabled-themes '(wheatgrass))
  '(global-linum-mode t)
  '(package-selected-packages
-   '(projectile clojure-mode treemacs company flycheck-clj-kondo multiple-cursors org aggressive-indent paredit rainbow-delimiters exec-path-from-shell cider)))
+   '(clojure-mode treemacs company flycheck-clj-kondo multiple-cursors org aggressive-indent paredit rainbow-delimiters exec-path-from-shell cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
